@@ -5,8 +5,6 @@ import {
   Typography,
   Avatar,
   Link,
-  Drawer,
-  Divider,
 } from "@mui/material";
 
 export default function Appbar({ drawerWidth }) {
