@@ -8,13 +8,17 @@ import {
   List,
   ListItemText,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import CreateIcon from "@mui/icons-material/Create";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Home } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Link } from "react-router-dom";
 export default function Drawerr({ drawerWidth }) {
+  const navigate = useNavigate();
+
   return (
     <Drawer
       sx={{
@@ -32,29 +36,38 @@ export default function Drawerr({ drawerWidth }) {
       <Divider />
       {/* list */}
       <List>
-
-        <ListItemButton>
+          {/* one */}
+        <ListItemButton component="a" href="/">
           <ListItemIcon>
             <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <CreateIcon />
-          </ListItemIcon>
-          <ListItemText primary="create" />
-        </ListItemButton>
+        {/* two :link from mui*/}
+        <Link to="/create">
+          <ListItemButton>
+            <ListItemIcon>
+              <CreateIcon />
+            </ListItemIcon>
+            <ListItemText primary="create" />
+          </ListItemButton>
+        </Link>
+        
+        {/* three : link from react*/}
+        <Link to={"/profile"}>
+          <ListItemButton>
+            <ListItemIcon>
+              <AccountBoxIcon />
+            </ListItemIcon>
+            <ListItemText primary="profile" />
+          </ListItemButton>
+        </Link>
 
-        <ListItemButton>
-          <ListItemIcon>
-            <AccountBoxIcon />
-          </ListItemIcon>
-          <ListItemText primary="profile" />
-        </ListItemButton>
-
-        <ListItemButton>
+        {/* four */}
+        <ListItemButton onClick={()=>{
+          navigate('/')
+        }}>
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
@@ -67,7 +80,7 @@ export default function Drawerr({ drawerWidth }) {
           </ListItemIcon>
           <ListItemText primary="Log Out" />
         </ListItemButton>
-        
+
       </List>
     </Drawer>
   );
